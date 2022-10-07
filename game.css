@@ -23,7 +23,7 @@
     margin: 0px;
 }
 
-.goal img{
+.food{
     width: 30%;
 }
 
@@ -75,4 +75,35 @@
 
 .encouragment{
     font-size: 35px;
+}
+
+/*ipad*/
+@media screen and (min-width: 768px) and (max-width: 1199px){
+    .foods{
+        width: 700px;
+        height: 700px;
+    }
+    .food{
+        width: 25%;
+    }
+    .goal p{
+        font-size: 25px;
+    }
+    .pop{
+        width: 60%;
+    }
+    .text{
+        font-size: 50px;
+    }
+}
+
+/*desktop*/
+@media screen and (min-width:1200px){
+    .foods{
+        width: 350px;
+        height: 350px;
+    }
+    .pop{
+        width: 75%;
+    }
 }

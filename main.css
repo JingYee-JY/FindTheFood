@@ -42,7 +42,7 @@ body{
     padding: 1%;
 }
 
-.startButton, .next,.tryAgain,.againButton,.homeButton{
+.startButton,.next,.tryAgain,.againButton,.homeButton{
     width: 100%;
     position: relative;
     align-self: center;
@@ -56,6 +56,10 @@ body{
     padding: 5% 5%;
     margin-bottom: 30px;
     font-size: 25px;
+}
+
+.next,.tryAgain{
+    justify-content: center;
 }
 
 .homeButton{
@@ -90,7 +94,7 @@ body{
 
 /*ipad*/
 @media screen and (min-width: 768px) and (max-width: 1199px){
-    .start,.game,.final{
+    .start,.popUp,.game,.final{
         margin-top: 30px;
     }
     .preview{
@@ -114,7 +118,7 @@ body{
         display: flex;
         justify-content: center;
     }
-    .start,.selection, .game, .final{
+    .start,.popUp, .game, .final{
         max-width: 400px;
     }
     .startButton,.next,.tryAgain,.againButton,.homeButton{
