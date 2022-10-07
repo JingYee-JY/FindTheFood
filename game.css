@@ -1,0 +1,78 @@
+.foods{
+    position: relative;
+    width: 350px;
+    height: 445px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(5,20%);
+    justify-content: center;
+    align-items: center;
+}
+
+.foods img{
+    height: 100%;
+}
+
+.number{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.goal h1, .goal p{
+    margin: 0px;
+}
+
+.goal img{
+    width: 30%;
+}
+
+.popUp{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    gap: 5vh;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    top: 0;
+    background-color: transparent;
+}
+
+.pop{
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.picture{
+    width: 40%;
+}
+
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
+.text{
+    font-size: 30px;
+}
+
+.emoji{
+    width: 50%;
+}
+
+.encouragment{
+    font-size: 35px;
+}
