@@ -42,7 +42,7 @@ body{
     padding: 1%;
 }
 
-.startButton,.next,.tryAgain,.againButton,.homeButton{
+.startButton,.againButton,.homeButton{
     width: 100%;
     position: relative;
     align-self: center;
@@ -58,8 +58,32 @@ body{
     font-size: 25px;
 }
 
-.next,.tryAgain{
-    justify-content: center;
+.startButton:active,.againButton:active,.homeButton:active{
+    animation: animate 0.2s;
+    -webkit-animation: animate 0.2s;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg) translateX(0px);
+        -webkit-transform: rotate(0deg) translateX(0px);
+    }
+    25%{
+        transform: rotate(-20deg) translateX(-10px);
+        -webkit-transform: rotate(-20deg) translateX(-10px);
+    }
+    50%{
+        transform: rotate(0deg) translateX(0px);
+        -webkit-transform: rotate(0deg) translateX(0px);
+    }
+    75%{
+        transform: rotate(20deg) translateX(10px);
+        -webkit-transform: rotate(20deg) translateX(10px);
+    }
+    100%{
+        transform: rotate(0deg) translateX(0px);
+        -webkit-transform: rotate(0deg) translateX(0px);
+    }
 }
 
 .homeButton{
@@ -81,6 +105,85 @@ body{
     align-items: center;
     display: flex;
     font-weight: 500;
+}
+
+.foods{
+    position: relative;
+    width: 350px;
+    height: 425px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(5,20%);
+    justify-content: center;
+    align-items: center;
+}
+
+.foods img{
+    height: 100%;
+}
+
+.number{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.goal h1, .goal p{
+    margin: 0px;
+}
+
+.food{
+    width: 30%;
+}
+
+.popUp{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    gap: 5vh;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    top: 0;
+    background-color: transparent;
+}
+
+.pop{
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.picture{
+    width: 40%;
+}
+
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
+.text{
+    font-size: 30px;
+}
+
+.emoji{
+    width: 50%;
+}
+
+.encouragment{
+    font-size: 35px;
 }
 
 /*mobile*/
@@ -110,6 +213,22 @@ body{
     .arrowHead{
         max-width: 20px;
     }
+    .foods{
+        width: 700px;
+        height: 700px;
+    }
+    .food{
+        width: 25%;
+    }
+    .goal p{
+        font-size: 25px;
+    }
+    .pop{
+        width: 60%;
+    }
+    .text{
+        font-size: 50px;
+    }
 }
 
 /*desktop*/
@@ -117,6 +236,9 @@ body{
     body{
         display: flex;
         justify-content: center;
+    }
+    .preview{
+        margin: 25px auto;
     }
     .start,.popUp, .game, .final{
         max-width: 400px;
@@ -128,5 +250,12 @@ body{
     .confrimButton{
         padding: 3%;
         max-width: 250px;
+    }
+    .foods{
+        width: 350px;
+        height: 350px;
+    }
+    .pop{
+        width: 75%;
     }
 }

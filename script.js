@@ -1,3 +1,4 @@
+const startButton = document.querySelector(".startButton")
 const questionNumber = document.querySelector(".number")
 const food = document.querySelector(".food")
 const foodName = document.querySelector(".name")
@@ -5,14 +6,19 @@ const popUp = document.querySelector(".popUp")
 const pop = document.querySelector(".pop")
 const picture = document.querySelector(".picture")
 const text = document.querySelector(".text")
-const next = document.querySelector(".next")
-const tryAgain = document.querySelector(".tryAgain")
+const start = document.querySelector(".start")
 const game = document.querySelector(".game")
 const final = document.querySelector(".final")
+
+const clickSound = document.getElementById("click")
+const correct = document.getElementById("correct")
+const clap = document.getElementById("clap")
+const wrong = document.getElementById("wrong")
 
 let current;
 let totalQuestion;
 let answer;
+let tempoQuestionArray = [];
 
 let foods = [
     {name: "Ang Ku Kueh", number: "1", image:"./img/AngKuKueh.png"},
@@ -38,48 +44,33 @@ Question()
 function Start(){
     current = 0
     totalQuestion = Math.floor(Math.random() * 10) + 5;
-    for(let x=1; x < 16; x++){
-        let currentClass = "btn" + x
-        let currentBtn = document.querySelector(`.${currentClass}`)
-
-        currentBtn.addEventListener("click", () => {
-            let currentdate = currentBtn.getAttribute("data")
-            console.log(currentBtn, currentdate, answer)
-            next.classList.add("hide")
-            tryAgain.classList.add("hide")
-            popUp.classList.remove("hide")
-            if(currentdate == answer){
-                picture.src = "./img/right.png"
-                pop.style.backgroundColor = "#44CB39"
-                text.innerHTML = "That's right!"
-                next.classList.remove("hide")
-                return
-            }
-            else{
-                picture.src = "./img/wrong.png"
-                pop.style.backgroundColor = "#C54C4C"
-                text.innerHTML = "That's not right!"
-                tryAgain.classList.remove("hide")
-            }
-        })
-    }
 }
 
 function Question(){
     if(current == totalQuestion){
+        clap.currentTime = 0
+        clap.play()
         game.classList.add("hide")
         final.classList.remove("hide");
         return
+    }
+    
+    if(tempoQuestionArray.length == 0){
+        for(let x = 0; x < foods.length; x++){
+            tempoQuestionArray.push(foods[x])
+        }
     }
 
     current += 1;
     choice = 0
     questionNumber.innerHTML = current + "/" + totalQuestion;
 
-    qIndex = Math.floor(Math.random() * foods.length);
-    food.src = foods[qIndex].image
-    foodName.innerHTML = foods[qIndex].name
-    answer = foods[qIndex].number
+    qIndex = Math.floor(Math.random() * tempoQuestionArray.length);
+    food.src = tempoQuestionArray[qIndex].image
+    foodName.innerHTML = `Find ${tempoQuestionArray[qIndex].name}`
+    answer = tempoQuestionArray[qIndex].number
+
+    tempoQuestionArray.splice(qIndex , 1)
 
     let tempoArray = [];
 
@@ -102,12 +93,56 @@ function Question(){
     }
 }
 
-next.addEventListener("click", () => {
-    popUp.classList.add("hide")
-    Question()
+startButton.addEventListener("click", () =>{
+    playClickSound()
+    let delay = setTimeout(() => {
+        start.classList.add("hide")
+        game.classList.remove("hide")
+    }, 200);
 })
 
-tryAgain.addEventListener("click", () => {
-    popUp.classList.add("hide")
-})
+for(let x=1; x < 16; x++){
+    let currentClass = "btn" + x
+    let currentBtn = document.querySelector(`.${currentClass}`)
+
+    currentBtn.addEventListener("click", () => {
+        playClickSound()
+        let currentdate = currentBtn.getAttribute("data")
+        console.log(currentBtn, currentdate, answer)
+        popUp.classList.remove("hide")
+        if(currentdate == answer){
+            correct.currentTime = 0
+            correct.play()
+            picture.src = "./img/right.png"
+            pop.style.backgroundColor = "#44CB39"
+            text.innerHTML = "That's right!"
+            let delay = setTimeout(()=>{
+                popUp.classList.add("hide")
+                Question()
+            },2000)
+            return
+        }
+        else{
+            wrong.currentTime = 0
+            wrong.play()
+            picture.src = "./img/wrong.png"
+            pop.style.backgroundColor = "#C54C4C"
+            text.innerHTML = "That's not right!"
+            let delay = setTimeout(()=>{
+                popUp.classList.add("hide")
+            },2000)
+        }
+    })
+}
+
+function playClickSound(){
+    console.log(clickSound)
+    clickSound.currentTime = 0
+    clickSound.play()
+}
+
+/*prevent double tag zoom*/
+document.addEventListener('dblclick', function(event) {
+event.preventDefault();
+}, { passive: false });
 

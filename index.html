@@ -15,9 +15,57 @@
             <img class="title" src="./img/title.png">
         </div>
         <img class="preview" src="./img/preview.png">
-        <button class="startButton" onclick="window.location.href='game.html'">
+        <button class="startButton">
             <p class="words"><img src="./img/arrow.png" class="arrowHead"> START GAME</p>
         </button>
     </div>
+    <div class="game hide">
+        <div class="number">1/5</div>
+        <div class="foods">
+            <img class="btn1" src="./img/IceCreamSandwich.png">
+            <img class="btn2" src="./img/Laksa.png">
+            <img class="btn3" src="./img/IceKachang.png">
+            <img class="btn4" src="./img/ChickenFeet.png">
+            <img class="btn5" src="./img/CurryPuffs.png">
+            <img class="btn6" src="./img/HuatKueh.png">
+            <img class="btn7" src="./img/AngKuKueh.png">
+            <img class="btn8" src="./img/Satay.png">
+            <img class="btn9" src="./img/PandanCake.png">
+            <img class="btn10" src="./img/IcedGemBiscuits.png">
+            <img class="btn11" src="./img/Otah.png">
+            <img class="btn12" src="./img/NasiLemak.png">
+            <img class="btn13" src="./img/ChickenRice.png">
+            <img class="btn14" src="./img/HawFlakes.png">
+            <img class="btn15" src="./img/ChweeKueh.png">
+        </div>
+        <div class="goal">
+            <h1 class="name">Find the food:</h1>
+            <img class="food">
+        </div>
+    </div>
+    <div class="popUp hide">
+        <div class="pop">
+            <img class="picture">
+            <p class="text"></p>
+        </div>
+    </div>
+    <div class="final hide">
+        <p class="encouragment">Good Job!</p>
+        <img class="emoji" src="./img/proud.png">
+        <p class="encouragment">Give yourself a pat on the back.</p>
+        <button class="againButton" onclick="window.location.href='index.html'">
+            <p class="words"><img src="./img/again.png" class="arrowHead">Play again</p>
+        </button>
+        <button class="homeButton" onclick="window.location.href='https://gimme.sg/activations/dementia/';">
+            <p class="words"><img src="./img/home.png" class="arrowHead">Back to home</p>
+        </button>
+    </div>
+
+    <audio id="click" src="sound/click.wav"></audio>
+    <audio id="correct" src="./sound/correct.wav"></audio>
+    <audio id="wrong" src="./sound/wrong.wav"></audio>
+    <audio id="clap" src="./sound/clap.wav"></audio>
+
+    <script src="./script.js"></script>
 </body>
 </html>
